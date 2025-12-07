@@ -1,0 +1,33 @@
+1. Original Data Source:
+Census:
+https://api.census.gov/data/2022/acs/acs1
+https://api.census.gov/data/2023/acs/acs1
+https://api.census.gov/data/2024/acs/acs1
+https://api.bls.gov/publicAPI/v2/timeseries/data/
+
+2. How to pick the variable we want
+See the variables list:
+https://api.census.gov/data/2022/acs/acs1/variables.html
+
+check the official document:
+https://www.census.gov/programs-surveys/acs/
+
+3. what variable we choose:
+소득/주거비 코어:
+B19013_001E – Median Household Income
+B25064_001E – Median Gross Rent (monthly)
+B25077_001E – Median Home Value
+
+Rent burden (세입자, 30%+):
+B25070_001E – 전체 renter-occupied units
+B25070_007E – 30–34.9%
+B25070_008E – 35–39.9%
+B25070_009E – 40–49.9%
+B25070_010E – 50%+
+
+Owner cost burden (소유자, 30%+):
+B25091_001E – 전체 owner-occupied units
+B25091_012E – 30–34.9%
+B25091_013E – 35–39.9%
+B25091_014E – 40–49.9%
+B25091_015E – 50%+
