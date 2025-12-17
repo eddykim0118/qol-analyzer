@@ -16,6 +16,8 @@ This project analyzes Quality of Life (QoL) across four U.S. states (California,
 - Regression model achieves R² = 1.0 (perfect fit)
 - Patterns remain stable across 2022-2024
 
+**Hosted app URL:** https://qol-analyzer.streamlit.app/ 
+
 ---
 
 ## 1. Project Objectives
@@ -96,7 +98,19 @@ response = requests.post("https://api.bls.gov/publicAPI/v2/timeseries/data/", js
 - State/local tax burden percentage
 - Used to calculate disposable income after taxes
 
-**Data Access**: Manual download (no API available)
+### 2.4 API Source: U.S. Bureau of Economic Analysis (BEA)
+**API Endpoint**: https://apps.bea.gov/api/data
+**Registration**: Required — BEA API UserID
+**Registration URL**: https://apps.bea.gov/api/signup/
+
+**Tables used:**
+- `SAINC1` (LineCode 1: Personal income)
+- `SAINC50` (LineCode 15: Personal current taxes)
+
+**Variables extracted:**
+- personal_income
+- personal_taxes
+- tax_burden_pct = personal_taxes / personal_income × 100
 
 ---
 
@@ -597,3 +611,4 @@ Policymakers seeking to improve quality of life should prioritize **reducing hou
 **Report Prepared By**: Jun Kim, Eddy Kim
 **Date**: December 17, 2024
 **Version**: 1.0
+
