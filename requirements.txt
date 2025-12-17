@@ -9,4 +9,5 @@ openpyxl>=3.0
 pytest>=7.0
 python-dotenv>=0.21
 streamlit>=1.31
+plotly>=5.18
 

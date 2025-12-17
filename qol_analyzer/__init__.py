@@ -1,8 +1,46 @@
 """
 Quality of Life Analyzer
+========================
 
-Modular utilities to fetch ACS/BLS data, engineer QoL metrics,
-run basic analysis, and visualize results.
+A comprehensive Python package for analyzing Quality of Life (QoL) across U.S. states
+using data from the U.S. Census Bureau (American Community Survey), Bureau of Labor Statistics
+(Consumer Price Index), and Tax Foundation (state/local tax burdens).
+
+This package provides end-to-end functionality for:
+- Fetching and cleaning multi-source datasets
+- Engineering features like real purchasing power and housing burden indices
+- Computing composite QoL scores using standardized z-scores
+- Running regression analysis to identify QoL drivers
+- Visualizing comparative state-level metrics
+
+Quick Start
+-----------
+>>> from qol_analyzer import fetch_acs_data, fetch_bls_cpi, merge_datasets
+>>> from qol_analyzer import add_cpi_adjustments, compute_qol_score
+>>>
+>>> # Fetch data for 2023
+>>> acs = fetch_acs_data(year=2023, states=["CA", "TX", "NY", "UT"])
+>>> cpi = fetch_bls_cpi()
+>>>
+>>> # Merge and compute QoL
+>>> merged = merge_datasets(acs, cpi)
+>>> with_real_income = add_cpi_adjustments(merged)
+>>> qol_data = compute_qol_score(with_real_income)
+
+Target States
+------------
+- California (CA)
+- Texas (TX)
+- New York (NY)
+- Utah (UT)
+
+Modules
+-------
+data_fetch : Data retrieval from Census ACS, BLS CPI, and Tax Foundation
+data_clean : Data standardization, cleaning, and merging utilities
+feature_eng : Feature engineering for CPI-adjusted income and QoL scoring
+analysis : Statistical analysis and regression modeling
+visualize : Plotting functions for comparative visualizations
 """
 
 from qol_analyzer.data_fetch import (
