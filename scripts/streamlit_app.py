@@ -263,15 +263,15 @@ def generate_insights(data, all_data):
     # Best/worst QoL
     best_state = data.loc[data["qol_score"].idxmax(), "state"]
     worst_state = data.loc[data["qol_score"].idxmin(), "state"]
-    insights.append(f"🏆 **{best_state}** has the highest QoL score, while **{worst_state}** has the lowest.")
+    insights.append(f"🏆 <strong>{best_state}</strong> has the highest QoL score, while <strong>{worst_state}</strong> has the lowest.")
 
     # Income leader
     richest = data.loc[data["real_income"].idxmax(), "state"]
-    insights.append(f"💰 **{richest}** has the highest real (CPI-adjusted) income.")
+    insights.append(f"💰 <strong>{richest}</strong> has the highest real (CPI-adjusted) income.")
 
     # Housing burden
     lowest_burden = data.loc[data["rent_burden_pct"].idxmin(), "state"]
-    insights.append(f"🏠 **{lowest_burden}** has the lowest rental housing burden.")
+    insights.append(f"🏠 <strong>{lowest_burden}</strong> has the lowest rental housing burden.")
 
     # Year-over-year trend (if multiple years available)
     years = sorted(all_data["year"].unique())
@@ -283,7 +283,7 @@ def generate_insights(data, all_data):
         prev_avg = all_data[all_data["year"] == prev_year]["qol_score"].mean()
 
         trend = "improved" if latest_avg > prev_avg else "declined"
-        insights.append(f"📈 Average QoL has **{trend}** from {prev_year} to {latest_year}.")
+        insights.append(f"📈 Average QoL has <strong>{trend}</strong> from {prev_year} to {latest_year}.")
 
     return insights
 
@@ -362,21 +362,41 @@ if comparison_mode == "Single Year Analysis":
     with col1:
         avg_median_income = filtered_df["median_income"].mean()
         create_kpi_card("Avg Median Income", avg_median_income, prefix="$")
+        # State breakdown
+        st.markdown("<small>", unsafe_allow_html=True)
+        for _, row in filtered_df.sort_values("median_income", ascending=False).iterrows():
+            st.markdown(f"<small>{row['state']}: ${row['median_income']:,.0f}</small>", unsafe_allow_html=True)
+        st.markdown("</small>", unsafe_allow_html=True)
 
     with col2:
         avg_real_income = filtered_df["real_income"].mean()
         create_kpi_card("Avg Real Income", avg_real_income, prefix="$")
+        # State breakdown
+        st.markdown("<small>", unsafe_allow_html=True)
+        for _, row in filtered_df.sort_values("real_income", ascending=False).iterrows():
+            st.markdown(f"<small>{row['state']}: ${row['real_income']:,.0f}</small>", unsafe_allow_html=True)
+        st.markdown("</small>", unsafe_allow_html=True)
 
     with col3:
         if "disposable_income" in filtered_df.columns:
             avg_disposable = filtered_df["disposable_income"].mean()
             create_kpi_card("Avg Disposable Income", avg_disposable, prefix="$")
+            # State breakdown
+            st.markdown("<small>", unsafe_allow_html=True)
+            for _, row in filtered_df.sort_values("disposable_income", ascending=False).iterrows():
+                st.markdown(f"<small>{row['state']}: ${row['disposable_income']:,.0f}</small>", unsafe_allow_html=True)
+            st.markdown("</small>", unsafe_allow_html=True)
         else:
             st.metric("Avg Disposable Income", "N/A")
 
     with col4:
         avg_qol = filtered_df["qol_score"].mean()
         create_kpi_card("Avg QoL Score", avg_qol, prefix="", suffix="")
+        # State breakdown
+        st.markdown("<small>", unsafe_allow_html=True)
+        for _, row in filtered_df.sort_values("qol_score", ascending=False).iterrows():
+            st.markdown(f"<small>{row['state']}: {row['qol_score']:.2f}</small>", unsafe_allow_html=True)
+        st.markdown("</small>", unsafe_allow_html=True)
 
     st.markdown("---")
 
