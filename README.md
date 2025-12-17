@@ -52,10 +52,10 @@ streamlit run scripts/streamlit_app.py
 
 ## Key Findings
 
-✅ **R² = 1.0** - Model explains 100% of QoL variance
-🏆 **Utah ranks #1** - Highest QoL score (+0.92 avg)
-🏠 **Housing > Income** - Housing burden is primary QoL driver
-📊 **Consistent Trends** - Stable patterns across 2022-2024
+- ✅ **R² = 1.0** - Model explains 100% of QoL variance
+- 🏆 **Utah ranks #1** - Highest QoL score (+0.92 avg)
+- 🏠 **Housing > Income** - Housing burden is primary QoL driver
+- 📊 **Consistent Trends** - Stable patterns across 2022-2024
 
 **Detailed results**: [REGRESSION_RESULTS.md](REGRESSION_RESULTS.md)
 
@@ -120,3 +120,4 @@ QoL = 0.5 × z(real_income) - 0.25 × z(rent_burden) - 0.25 × z(owner_burden)
 
 **Built with**: Python, Pandas, Streamlit, Plotly, scikit-learn
 **Generated with**: [Claude Code](https://claude.com/claude-code)
+
