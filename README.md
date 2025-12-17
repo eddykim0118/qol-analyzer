@@ -119,5 +119,4 @@ QoL = 0.5 × z(real_income) - 0.25 × z(rent_burden) - 0.25 × z(owner_burden)
 ---
 
 **Built with**: Python, Pandas, Streamlit, Plotly, scikit-learn
-**Generated with**: [Claude Code](https://claude.com/claude-code)
 

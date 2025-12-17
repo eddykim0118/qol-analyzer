@@ -651,7 +651,6 @@ else:  # Multi-Year Trends
 st.markdown("---")
 st.markdown(
     '<div style="text-align: center; color: #666; padding: 2rem 0;">'
-    '🤖 Generated with <a href="https://claude.com/claude-code" target="_blank">Claude Code</a> | '
     'Data sources: U.S. Census Bureau, Bureau of Labor Statistics, Tax Foundation'
     '</div>',
     unsafe_allow_html=True
