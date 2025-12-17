@@ -2,9 +2,6 @@
 venv/
 .venv/
 
-# Data outputs
-data/processed/
-
 # Bytecode
 __pycache__/
 *.pyc
